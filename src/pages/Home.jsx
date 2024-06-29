@@ -2,6 +2,7 @@ import { useState } from "react";
 import URLForm from "../components/URLForm";
 import URLResult from "../components/URLResult";
 import { ClipboardCopy, Check } from "lucide-react";
+import { API_URLS } from "../constants/api-url.constant";
 
 function Home() {
   const [url, setUrl] = useState("");
@@ -11,7 +12,7 @@ function Home() {
 
   const createShortUrl = async (data) => {
     try {
-      const res = await fetch("http://localhost:5164/short", {
+      const res = await fetch(`${API_URLS.prod}/short`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

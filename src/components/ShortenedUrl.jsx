@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import TotalUrlClicks from "./TotalUrlClicks";
 import { useCallback, useState } from "react";
+import { API_URLS } from "../constants/api-url.constant";
 
 function ShortenedUrl() {
   const {
@@ -20,7 +21,7 @@ const [totalUrlClicks, setTotalUrlClicks] = useState(null)
   };
 
   const fetchAnalytics = useCallback(async(urlcode) => {
-    const data = await fetch(`http://localhost:5164/analytics/${urlcode}`);
+    const data = await fetch(`${API_URLS.prod}/analytics/${urlcode}`);
     const response = await data.json();
     setTotalUrlClicks(response);
     console.log(response);

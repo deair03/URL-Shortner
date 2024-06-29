@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { Tooltip } from "react-tooltip";
+import { API_URLS } from "../constants/api-url.constant";
 
 function URL() {
   const [tableData, setTableData] = useState([]);
@@ -14,7 +15,7 @@ function URL() {
   const fetchUrl = useCallback(async () => {
     try {
       const getUrl = await fetch(
-        `http://localhost:5164/paged-urls?pageIndex=${pageIndex}&pageSize=${pageSize}`
+        `${API_URLS.prod}/paged-urls?pageIndex=${pageIndex}&pageSize=${pageSize}`
       );
       const urlRes = await getUrl.json();
       setTableData(urlRes.data);
